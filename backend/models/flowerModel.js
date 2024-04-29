@@ -2,16 +2,20 @@ import mongoose from "mongoose";
 
 const flowerSchema = mongoose.Schema(
   {
-    species: {
+    name: {
       type: String,
       required: true,
     },
-    season: {
+    flowers: {
+      type: Array,
+      required: true,
+    },
+    type: {
       type: String,
       required: true,
     },
-    origin: {
-      type: String,
+    occasion: {
+      type: Array,
       required: true,
     },
     price: {
