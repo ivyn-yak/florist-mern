@@ -1,7 +1,7 @@
 import Button from "../components/Button";
 import { arrowRight } from "../assets/icons";
 import { stats } from "../constants";
-import { bigShoe1 } from "../assets/images";
+import { bigFlower1 } from "../assets/images";
 import GetFlowers from "../components/GetFlowers";
 
 const Main = () => {
@@ -41,7 +41,7 @@ const Main = () => {
 
       <div className="relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-hero bg-cover bg-center">
         <img
-          src={bigShoe1}
+          src={bigFlower1}
           alt="shoe collection"
           width={610}
           height={500}
