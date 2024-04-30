@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
 import CreateFlower from "./pages/CreateFlower";
 import DeleteFlower from "./pages/DeleteFlower";
 import UpdateFlower from "./pages/UpdateFlower";

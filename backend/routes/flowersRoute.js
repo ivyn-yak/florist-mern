@@ -39,7 +39,7 @@ router.get("/", async (request, response) => {
   try {
     const flowers = await Flower.find({});
 
-    console.log(flowers[0]._id);
+    // console.log(flowers[0]._id);
     return response.status(200).json({
       count: flowers.length,
       data: flowers,
