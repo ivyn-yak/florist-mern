@@ -6,9 +6,11 @@ const router = express.Router();
 router.post("/", async (request, response) => {
   try {
     if (
-      !request.body.species ||
-      !request.body.season ||
-      !request.body.origin ||
+      !request.body.name ||
+      !request.body.flowers ||
+      !request.body.type ||
+      !request.body.occasion ||
+      !request.body.imgURL ||
       !request.body.price
     ) {
       return response.status(400).send({
@@ -17,9 +19,11 @@ router.post("/", async (request, response) => {
     }
 
     const newFlower = {
-      species: request.body.species,
-      season: request.body.season,
-      origin: request.body.origin,
+      name: request.body.name,
+      flowers: request.body.flowers,
+      type: request.body.type,
+      occasion: request.body.occasion,
+      imgURL: request.body.imgURL,
       price: request.body.price,
     };
 
@@ -64,13 +68,41 @@ router.get("/:id", async (request, response) => {
   }
 });
 
+////// POST: get flowers by category ///////
+router.post("/filter", async (request, response) => {
+  try {
+    if (!request.body.category || !request.body.subcat) {
+      return response.status(400).send({
+        message: "Send all required fields",
+      });
+    }
+
+    console.log(request.body);
+
+    const category = request.body.category;
+    const subcat = request.body.subcat;
+
+    console.log(category, subcat);
+
+    const flowerList = await Flower.find({ [category]: subcat });
+    console.log(flowerList);
+
+    return response.status(200).json({ flowerList });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
 ////// PUT: update flower ///////
 router.put("/:id", async (request, response) => {
   try {
     if (
-      !request.body.species ||
-      !request.body.season ||
-      !request.body.origin ||
+      !request.body.name ||
+      !request.body.flowers ||
+      !request.body.type ||
+      !request.body.occasion ||
+      !request.body.imgURL ||
       !request.body.price
     ) {
       return response.status(400).send({
