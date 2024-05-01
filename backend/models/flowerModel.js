@@ -22,6 +22,10 @@ const flowerSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    imgURL: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

@@ -10,6 +10,7 @@ router.post("/", async (request, response) => {
       !request.body.flowers ||
       !request.body.type ||
       !request.body.occasion ||
+      !request.body.imgURL ||
       !request.body.price
     ) {
       return response.status(400).send({
@@ -22,6 +23,7 @@ router.post("/", async (request, response) => {
       flowers: request.body.flowers,
       type: request.body.type,
       occasion: request.body.occasion,
+      imgURL: request.body.imgURL,
       price: request.body.price,
     };
 
@@ -100,6 +102,7 @@ router.put("/:id", async (request, response) => {
       !request.body.flowers ||
       !request.body.type ||
       !request.body.occasion ||
+      !request.body.imgURL ||
       !request.body.price
     ) {
       return response.status(400).send({
