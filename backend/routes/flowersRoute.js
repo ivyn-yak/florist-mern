@@ -6,9 +6,10 @@ const router = express.Router();
 router.post("/", async (request, response) => {
   try {
     if (
-      !request.body.species ||
-      !request.body.season ||
-      !request.body.origin ||
+      !request.body.name ||
+      !request.body.flowers ||
+      !request.body.type ||
+      !request.body.occasion ||
       !request.body.price
     ) {
       return response.status(400).send({
@@ -17,9 +18,10 @@ router.post("/", async (request, response) => {
     }
 
     const newFlower = {
-      species: request.body.species,
-      season: request.body.season,
-      origin: request.body.origin,
+      name: request.body.name,
+      flowers: request.body.flowers,
+      type: request.body.type,
+      occasion: request.body.occasion,
       price: request.body.price,
     };
 
@@ -68,9 +70,10 @@ router.get("/:id", async (request, response) => {
 router.put("/:id", async (request, response) => {
   try {
     if (
-      !request.body.species ||
-      !request.body.season ||
-      !request.body.origin ||
+      !request.body.name ||
+      !request.body.flowers ||
+      !request.body.type ||
+      !request.body.occasion ||
       !request.body.price
     ) {
       return response.status(400).send({
