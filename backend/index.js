@@ -1,8 +1,8 @@
 import express, { request, response } from "express";
 import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
-import { Flower } from "./models/flowerModel.js";
 import flowersRoute from "./routes/flowersRoute.js"
+import reviewsRoute from "./routes/reviewsRoute.js"
 import cors from "cors"
 
 const app = express();
@@ -14,12 +14,8 @@ app.use(cors({
 }))
 app.use(express.json());
 
-app.get("/", (request, response) => {
-  console.log(request);
-  return response.status(234).send("hello");
-});
-
 app.use("/flowers", flowersRoute)
+app.use("/reviews", reviewsRoute)
 
 mongoose
   .connect(mongoDBURL)
