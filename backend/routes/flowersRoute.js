@@ -66,6 +66,32 @@ router.get("/:id", async (request, response) => {
   }
 });
 
+////// POST: get flowers by category ///////
+router.post("/filter", async (request, response) => {
+  try {
+    if (!request.body.category || !request.body.subcat) {
+      return response.status(400).send({
+        message: "Send all required fields",
+      });
+    }
+
+    console.log(request.body);
+
+    const category = request.body.category;
+    const subcat = request.body.subcat;
+
+    console.log(category, subcat);
+
+    const flowerList = await Flower.find({ [category]: subcat });
+    console.log(flowerList);
+
+    return response.status(200).json({ flowerList });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
 ////// PUT: update flower ///////
 router.put("/:id", async (request, response) => {
   try {
