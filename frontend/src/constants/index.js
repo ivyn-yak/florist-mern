@@ -1,4 +1,5 @@
 import { facebook, instagram, shieldTick, support, truckFast, twitter } from "../assets/icons";
+import { bigFlower1, bigFlower2, bigFlower3, thumbnailFlower1, thumbnailFlower2, thumbnailFlower3 } from "../assets/images";
 
 export const navLinks = [
   { href: "#home", label: "Home" },
@@ -67,4 +68,19 @@ export const socialMedia = [
   { src: facebook, alt: "facebook logo" },
   { src: twitter, alt: "twitter logo" },
   { src: instagram, alt: "instagram logo" },
+];
+
+export const mainFlowers = [
+    {
+        thumbnail: thumbnailFlower1,
+        bigFlowerImg: bigFlower1,
+    },
+    {
+        thumbnail: thumbnailFlower2,
+        bigFlowerImg: bigFlower2,
+    },
+    {
+        thumbnail: thumbnailFlower3,
+        bigFlowerImg: bigFlower3,
+    },
 ];

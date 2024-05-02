@@ -1,10 +1,26 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Button from "../components/Button";
 import { arrowRight } from "../assets/icons";
 import { stats } from "../constants";
 import { bigFlower1 } from "../assets/images";
-import GetFlowers from "../components/GetFlowers";
+import FlowerCard from "../components/FlowerCard"
+import { mainFlowers } from "../constants";
 
 const Main = () => {
+  const [bigFlowerImg, setBigFlowerImg] = useState(bigFlower1);
+
+  // const getFlowers = async() => {
+  //   const response = await axios.get("http://localhost:5001/flowers")
+  //   setFlowers(response.data.data)
+  //   console.log(response)
+  //   console.log(flowers)
+  // }
+
+  // useEffect(()=> {
+  //   getFlowers()
+  // }, [])
+
   return (
     <section
       id="home"
@@ -41,15 +57,20 @@ const Main = () => {
 
       <div className="relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-hero bg-cover bg-center">
         <img
-          src={bigFlower1}
+          src={bigFlowerImg}
           alt="shoe collection"
           width={610}
-          height={500}
+          height={502}
           className="object-contain relative z-10"
         />
 
-        <GetFlowers />
-
+        <div className="flex sm:gap-6 gap-4 absolute -bottom-[5%] sm:left-[10%] max-sm:px-6">
+          {mainFlowers.map((flower) => (
+            <div key={flower.thumbnail}>
+              <FlowerCard imgURL={flower} changeBigFlowerImg={(flower) => setBigFlowerImg(flower)} bigFlowerImg={bigFlowerImg} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

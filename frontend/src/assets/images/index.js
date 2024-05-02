@@ -18,7 +18,7 @@ import shoe8 from './shoe8.svg'
 
 import thumbnailBackground from './thumbnail-background.svg'
 import thumbnailFlower1 from './freesia-flower-small.avif'
-import thumbnailFlower2 from './gladiolus-flower-big.avif'
+import thumbnailFlower2 from './gladiolus-flower-small.avif'
 import thumbnailFlower3 from './lily-small.webp'
 
 export {
