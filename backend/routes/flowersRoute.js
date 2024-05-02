@@ -11,7 +11,8 @@ router.post("/", async (request, response) => {
       !request.body.type ||
       !request.body.occasion ||
       !request.body.imgURL ||
-      !request.body.price
+      !request.body.price ||
+      !request.body.rating
     ) {
       return response.status(400).send({
         message: "Send all required fields",
@@ -25,6 +26,7 @@ router.post("/", async (request, response) => {
       occasion: request.body.occasion,
       imgURL: request.body.imgURL,
       price: request.body.price,
+      rating: request.body.rating,
     };
 
     const flower = await Flower.create(newFlower);
@@ -103,7 +105,8 @@ router.put("/:id", async (request, response) => {
       !request.body.type ||
       !request.body.occasion ||
       !request.body.imgURL ||
-      !request.body.price
+      !request.body.price ||
+      !request.body.rating
     ) {
       return response.status(400).send({
         message: "Send all required fields",
