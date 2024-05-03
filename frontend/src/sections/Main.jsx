@@ -59,7 +59,7 @@ const Main = () => {
         <img
           src={bigFlowerImg}
           alt="shoe collection"
-          width={480}
+          width={470}
           height={450}
           className="object-contain relative z-10"
         />
