@@ -1,17 +1,18 @@
-import bigFlower1 from './freesia-flower-big.avif'
-import bigFlower2 from './gladiolus-flower-big.avif'
-import bigFlower3 from './lily-big.webp'
+import bigFlower1 from './tulips-big2.webp'
+import bigFlower2 from './pink-white-tulips.png'
+import bigFlower3 from './roses-big.png'
 
 import customer1 from './customer1.jpeg'
 import customer2 from './customer2.svg'
 
-import footerLogo from './flower-logo2.png'
 import headerLogo from './flower-logo.jpeg'
 
 import thumbnailBackground from './thumbnail-background.svg'
-import thumbnailFlower1 from './freesia-flower-small.avif'
-import thumbnailFlower2 from './gladiolus-flower-small.avif'
-import thumbnailFlower3 from './lily-small.webp'
+import thumbnailFlower1 from './tulips-small.png'
+import thumbnailFlower2 from './pink-white-tulips.png'
+import thumbnailFlower3 from './roses-small.webp'
+
+import Flower4 from "./tulips-big.png"
 
 export {
     bigFlower1,
@@ -21,11 +22,12 @@ export {
     customer1,
     customer2,
 
-    footerLogo,
     headerLogo,
 
     thumbnailBackground,
     thumbnailFlower1,
     thumbnailFlower2,
-    thumbnailFlower3
+    thumbnailFlower3,
+
+    Flower4
 }

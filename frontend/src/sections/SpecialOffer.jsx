@@ -1,4 +1,4 @@
-import { bigFlower3 } from "../assets/images";
+import { Flower4 } from "../assets/images";
 import Button from "../components/Button";
 import { arrowRight } from "../assets/icons";
 
@@ -7,7 +7,7 @@ const SpecialOffer = () => {
     <section className="flex justify-wrap items-center max-xl:flex-col-reverse gap-10 max-container">
       <div className="flex-1">
         <img
-          src={bigFlower3}
+          src={Flower4}
           width={773}
           height={687}
           className="object-contain w-full"
