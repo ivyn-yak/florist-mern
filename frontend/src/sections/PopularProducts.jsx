@@ -21,7 +21,7 @@ const PopularProducts = () => {
         <h2 className="text-4xl font-palanquin font-bold">Popular Products</h2>
         <p className="lg:max-w-lg mt-2 tracking-wider text-slate-gray font-serif">Discover our most sought-after products.</p>
       </div>
-      <div className="mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-14">
+      <div className="mt-12 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-14">
         {popProducts.map((product) => (
           <PopularProductCard 
           key={product.name}
