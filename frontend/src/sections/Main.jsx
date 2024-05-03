@@ -1,25 +1,14 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Button from "../components/Button";
 import { arrowRight } from "../assets/icons";
 import { stats } from "../constants";
 import { bigFlower1 } from "../assets/images";
 import FlowerCard from "../components/FlowerCard"
 import { mainFlowers } from "../constants";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   const [bigFlowerImg, setBigFlowerImg] = useState(bigFlower1);
-
-  // const getFlowers = async() => {
-  //   const response = await axios.get("http://localhost:5001/flowers")
-  //   setFlowers(response.data.data)
-  //   console.log(response)
-  //   console.log(flowers)
-  // }
-
-  // useEffect(()=> {
-  //   getFlowers()
-  // }, [])
 
   return (
     <section
@@ -37,8 +26,10 @@ const Main = () => {
         <p className="font-serif text-slate-gray tracking-wider text-lg leading-8 mt-6 mb-14 sm:max-w-sm">
           Customise your bouquet of flowers for every occasion.
         </p>
-
+        <Link to="/flowers/details">
         <Button label="Shop Now" iconURL={arrowRight}></Button>
+
+        </Link>
 
         <div className="flex justify-start items-start flex-wrap w-full mt-20 gap-16">
           {stats.map((stat) => (
