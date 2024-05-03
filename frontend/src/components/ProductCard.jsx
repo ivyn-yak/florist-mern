@@ -1,14 +1,13 @@
 import { star } from "../assets/icons";
-import { thumbnailBackground } from "../assets/images";
 
-const PopularProductCard = ({ imgURL, name, price, rating }) => {
+const ProductCard = ({ imgURL, name, price, rating }) => {
   return (
     <div className="flex flex-1 flex-col w-full max-sm:w-full group">
       <div className="flex justify-center items-center bg-center bg-cover rounded-xl max-sm:p-4 bg-stone-100">
         <img
           src={imgURL}
           alt={name}
-          className="w-[260px] h-[260px] transition-transform duration-300 hover:scale-[1.08]"
+          className="w-[260px] h-[260px] transition-transform duration-300 group-hover:scale-[1.08]"
         />
       </div>
 
@@ -28,4 +27,4 @@ const PopularProductCard = ({ imgURL, name, price, rating }) => {
   );
 };
 
-export default PopularProductCard;
+export default ProductCard;

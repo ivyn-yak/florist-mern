@@ -9,7 +9,7 @@ const App = () => (
     <Route path="/flowers/create" element={<CreateFlower/>} />
     <Route path="/flowers/delete/:id" element={<DeleteFlower/>} />
     <Route path="/flowers/update/:id" element={<UpdateFlower/>} />
-    <Route path="/flowers/details" element={<ViewAll/>} />
+    <Route path="/flowers/view" element={<ViewAll/>} />
   </Routes>
 );
 

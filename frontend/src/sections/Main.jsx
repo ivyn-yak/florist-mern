@@ -26,7 +26,7 @@ const Main = () => {
         <p className="font-serif text-slate-gray tracking-wider text-lg leading-8 mt-6 mb-14 sm:max-w-sm">
           Customise your bouquet of flowers for every occasion.
         </p>
-        <Link to="/flowers/details">
+        <Link to="/flowers/view">
         <Button label="Shop Now" iconURL={arrowRight}></Button>
 
         </Link>
@@ -43,7 +43,7 @@ const Main = () => {
         </div>
       </div>
 
-      <div className="relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-stone-100 bg-cover bg-center">
+      <div className="relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-stone-100 bg-cover bg-center">
         <img
           src={bigFlowerImg}
           alt="shoe collection"

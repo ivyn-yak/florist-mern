@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import PopularProductCard from "../components/PopularProductCard"
+import ProductCard from "../components/ProductCard"
 
 const PopularProducts = () => {
   const [popProducts, setPopProducts] = useState([]);
@@ -23,7 +23,7 @@ const PopularProducts = () => {
       </div>
       <div className="mt-12 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-14">
         {popProducts.map((product) => (
-          <PopularProductCard 
+          <ProductCard 
           key={product.name}
           {...product}
           />
