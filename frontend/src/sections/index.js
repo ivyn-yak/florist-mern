@@ -7,6 +7,7 @@ import SpecialOffer from "./SpecialOffer";
 import Subscribe from "./Subscribe";
 import SuperQuality from "./SuperQuality";
 import DisplayProducts from "./DisplayProducts";
+import Flower from "./Flower";
 
 export {
     CustomerReviews,
@@ -18,4 +19,5 @@ export {
     Subscribe,
     SuperQuality,
     DisplayProducts,
+    Flower
 }
