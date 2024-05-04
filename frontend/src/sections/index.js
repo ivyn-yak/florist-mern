@@ -8,6 +8,7 @@ import Subscribe from "./Subscribe";
 import SuperQuality from "./SuperQuality";
 import DisplayProducts from "./DisplayProducts";
 import Flower from "./Flower";
+import DisplayCart from "./DisplayCart";
 
 export {
     CustomerReviews,
@@ -19,5 +20,6 @@ export {
     Subscribe,
     SuperQuality,
     DisplayProducts,
-    Flower
+    Flower,
+    DisplayCart
 }
