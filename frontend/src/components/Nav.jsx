@@ -1,9 +1,12 @@
 import { headerLogo } from "../assets/images";
 import { hamburger } from "../assets/icons";
 import { navLinks } from "../constants/index.js";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
+import NavLink from "./NavLink";
 
 const Nav = () => {
+  const {cartProducts} = useContext(CartContext)
   return (
     <header className="padding-x py-8 absolute z-10 w-full">
       <nav className="flex justify-between items-center max-container">
@@ -16,14 +19,16 @@ const Nav = () => {
         <ul className="flex-1 flex justify-center items-center gap-16 max-lg:hidden">
           {navLinks.map((item) => (
             <li key={item.label}>
-              <Link
+              <NavLink
                 to={item.href}
-                className=" leading-normal text-lg text-slate-gray font-serif tracking-wider hover:underline "
               >
                 {item.label}
-              </Link>
+              </NavLink>
             </li>
           ))}
+          <li>
+            <NavLink to="/cart">Cart ({cartProducts.length})</NavLink>
+          </li>
         </ul>
 
         <a
