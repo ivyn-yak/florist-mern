@@ -2,10 +2,11 @@ import { facebook, instagram, shieldTick, support, truckFast, twitter } from "..
 import { bigFlower1, bigFlower2, bigFlower3, thumbnailFlower1, thumbnailFlower2, thumbnailFlower3 } from "../assets/images";
 
 export const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#about-us", label: "About Us" },
-  { href: "#products", label: "Products" },
-  { href: "#contact-us", label: "Contact Us" },
+  { href: "/", label: "Home" },
+  { href: "/", label: "About Us" },
+  { href: "/flowers/view", label: "Products" },
+  { href: "/", label: "Contact Us" },
+  { href: "/cart", label: "Cart" },
 ];
 
 

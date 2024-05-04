@@ -3,7 +3,7 @@ import { footerLinks, socialMedia } from "../constants";
 
 const Footer = () => {
   return (
-    <footer className="max-container">
+    <footer className="max-container" id="footer">
       <div className="flex justify-between items-start gap-20 flex-wrap max-lg:flex-col">
         <div className="flex flex-col items-start">
           <h4 className="text-white font-serif text-2xl tracking-wider leading-normal font-medium mb-4">

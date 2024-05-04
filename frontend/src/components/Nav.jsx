@@ -1,6 +1,7 @@
 import { headerLogo } from "../assets/images";
 import { hamburger } from "../assets/icons";
 import { navLinks } from "../constants/index.js";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
@@ -15,12 +16,12 @@ const Nav = () => {
         <ul className="flex-1 flex justify-center items-center gap-16 max-lg:hidden">
           {navLinks.map((item) => (
             <li key={item.label}>
-              <a
-                href={item.href}
+              <Link
+                to={item.href}
                 className=" leading-normal text-lg text-slate-gray font-serif tracking-wider hover:underline "
               >
                 {item.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
