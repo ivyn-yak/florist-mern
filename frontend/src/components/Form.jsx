@@ -3,7 +3,7 @@ import axios from "axios";
 import Counter from "./Counter";
 import Button from "./Button";
 import { useAddToCart, useCart } from "./CartContext";
-import { getCart, createCart, updateCart } from "../constants/api";
+import { getCart, createCart, updateCart } from "../constants/cartApi";
 
 const Form = ({ id }) => {
   const [quantity, setQuantity] = useState(1);
@@ -35,7 +35,7 @@ const Form = ({ id }) => {
 
   useEffect(() => {
     processCart();
-    console.log(cartProducts)
+    console.log(cartProducts);
   }, [cartProducts]);
 
   const handleChange = (e) => {

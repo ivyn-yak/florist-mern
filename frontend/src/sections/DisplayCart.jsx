@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useCart } from "../components/CartContext";
-import { getCart } from "../constants/api";
+import { getCart } from "../constants/cartApi";
+import Table from "../components/Table";
 
 const DisplayCart = () => {
   const [cart, setCart] = useState([]);
@@ -30,13 +29,7 @@ const DisplayCart = () => {
           <h2 className="font-palanquin text-3xl capitalize font-bold lg:max-w-lg">
             Cart
           </h2>
-          {cart.map((product) => (
-            <div>
-              <p className="mt-3">{product.id}</p>
-              <p className="mt-3">{product.quantity}</p>
-              <p className="mt-3">{product.message + "heh"}</p>
-            </div>
-          ))}
+          <Table cart={cart} />
         </div>
 
         <div className=" rounded-xl bg-stone-100 p-[30px] col-span-2">
