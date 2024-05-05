@@ -1,12 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import Counter from "./Counter";
 import Button from "./Button";
-import { CartContext, useAddToCart } from "./CartContext";
+import { useAddToCart, useCart } from "./CartContext";
 
 const Form = ({ id }) => {
   const [quantity, setQuantity] = useState(1);
   const [message, setMessage] = useState("");
+
+  const { cartProducts } = useCart()
+
+  useEffect(() => {
+    console.log(cartProducts);
+  }, [cartProducts]);
 
   const addToCart = useAddToCart();
 
@@ -17,18 +23,11 @@ const Form = ({ id }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const cart = {
-      id: id,
-      quantity: quantity,
-      message: message,
-    };
-
     setMessage("");
 
-    addToCart(id);
-
     try {
-      console.log(cart);
+      addToCart(id);
+
       //   const response = await axios.post(
       //     "https://localhost:5001/updateCart",
       //     cart

@@ -7,11 +7,8 @@ export const useCart = () => useContext(CartContext);
 export function useAddToCart() {
   const { addProduct } = useContext(CartContext);
 
-  console.log(addProduct)
-
   const addToCart = (id) => {
     addProduct(id);
-    console.log(id)
   };
 
   return addToCart;
