@@ -7,8 +7,8 @@ export const useCart = () => useContext(CartContext);
 export function useAddToCart() {
   const { addProduct } = useContext(CartContext);
 
-  const addToCart = (id) => {
-    addProduct(id);
+  const addToCart = (cart) => {
+    addProduct(cart);
   };
 
   return addToCart;
@@ -17,8 +17,8 @@ export function useAddToCart() {
 export function CartContextProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
 
-  function addProduct(productId) {
-    setCartProducts((prev) => [...prev, productId]);
+  function addProduct(cart) {
+    setCartProducts((prev) => [...prev, cart]);
   }
 
   return (

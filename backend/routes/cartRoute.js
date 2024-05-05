@@ -27,6 +27,21 @@ router.post("/", async (request, response) => {
   }
 });
 
+////// GET: get all carts ///////
+router.get("/", async (request, response) => {
+  try {
+    const carts = await Cart.find({});
+
+    return response.status(200).json({
+      count: carts.length,
+      data: carts,
+    });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
 ////// GET: get cart by userid ///////
 router.get("/:id", async (request, response) => {
   try {

@@ -3,18 +3,40 @@ import axios from "axios";
 import Counter from "./Counter";
 import Button from "./Button";
 import { useAddToCart, useCart } from "./CartContext";
+import { getCart, createCart, updateCart } from "../constants/api";
 
 const Form = ({ id }) => {
   const [quantity, setQuantity] = useState(1);
   const [message, setMessage] = useState("");
 
-  const { cartProducts } = useCart()
+  const { cartProducts } = useCart();
+  const addToCart = useAddToCart();
+
+  const userId = "2";
+
+  const cart = {
+    id: id,
+    quantity: quantity,
+    message: message,
+  };
+
+  const processCart = async () => {
+    try {
+      const response = await getCart({ userId });
+      if (response.length > 0) {
+        const res = await updateCart({ userId, cartProducts });
+      } else {
+        const res = await createCart({ userId, cartProducts });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   useEffect(() => {
-    console.log(cartProducts);
+    processCart();
+    console.log(cartProducts)
   }, [cartProducts]);
-
-  const addToCart = useAddToCart();
 
   const handleChange = (e) => {
     setMessage(e.target.value);
@@ -24,18 +46,7 @@ const Form = ({ id }) => {
     e.preventDefault();
 
     setMessage("");
-
-    try {
-      addToCart(id);
-
-      //   const response = await axios.post(
-      //     "https://localhost:5001/updateCart",
-      //     cart
-      //   );
-      //   console.log("Response:", response.data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    addToCart(cart);
   };
 
   return (
