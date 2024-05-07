@@ -10,9 +10,7 @@ const DisplayCart = () => {
   const getUserCart = async ({ userId }) => {
     const response = await getCart({ userId });
 
-    if (response.length == 0) {
-      console.log("cart is empty");
-    } else {
+    if (response.length != 0) {
       setCart(response[0].cart);
       console.log(response[0].cart);
     }
@@ -29,6 +27,13 @@ const DisplayCart = () => {
           <h2 className="font-palanquin text-3xl capitalize font-bold lg:max-w-lg">
             Cart
           </h2>
+          <p
+            className={`font-palanquin text-xl capitalize font-semibold lg:max-w-lg mt-3 ${
+              cart.length === 0 ? "" : "hidden"
+            }`}
+          >
+            Your Cart is empty!
+          </p>
           <Table cart={cart} />
         </div>
 
