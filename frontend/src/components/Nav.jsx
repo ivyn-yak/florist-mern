@@ -1,12 +1,28 @@
 import { headerLogo } from "../assets/images";
 import { hamburger } from "../assets/icons";
 import { navLinks } from "../constants/index.js";
-import { useContext } from "react";
-import { CartContext } from "./CartContext";
+import { useCart } from "./CartContext";
 import NavLink from "./NavLink";
+import { getCart } from "../constants/cartApi";
+import React, { useEffect } from "react";
+
 
 const Nav = () => {
-  const {cartProducts} = useContext(CartContext)
+  const {userId, cartProducts, setCartProducts} = useCart()
+
+  const fetchCartCount = async () => {
+    const cart = await getCart({userId})
+    setCartProducts(cart[0].cart)
+  }
+
+  useEffect(() => {
+    fetchCartCount();
+
+    const interval = setInterval(fetchCartCount, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, [])
+  
+  
   return (
     <header className="padding-x py-8 absolute z-10 w-full">
       <nav className="flex justify-between items-center max-container">

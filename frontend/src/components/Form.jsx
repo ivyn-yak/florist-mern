@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useMemo } from "react";
 import axios from "axios";
 import Counter from "./Counter";
 import Button from "./Button";
@@ -10,6 +10,7 @@ const Form = ({ id }) => {
   const [message, setMessage] = useState("");
 
   const { cartProducts } = useCart();
+  const memoCartProducts = useMemo(() => cartProducts, [cartProducts]);
   const addToCart = useAddToCart();
 
   const userId = "2";
@@ -23,6 +24,7 @@ const Form = ({ id }) => {
   const processCart = async () => {
     try {
       const response = await getCart({ userId });
+
       if (response.length > 0) {
         const res = await updateCart({ userId, cartProducts });
       } else {
@@ -35,8 +37,8 @@ const Form = ({ id }) => {
 
   useEffect(() => {
     processCart();
-    console.log(cartProducts);
-  }, [cartProducts]);
+    console.log(memoCartProducts);
+  }, [memoCartProducts]);
 
   const handleChange = (e) => {
     setMessage(e.target.value);

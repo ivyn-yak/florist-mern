@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Button from "../components/Button";
 import { arrowRight } from "../assets/icons";
 import { stats } from "../constants";

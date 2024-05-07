@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { getCart } from "../constants/cartApi";
 import Table from "../components/Table";
+import { useCart } from "../components/CartContext";
 
 const DisplayCart = () => {
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
 
-  const userId = "2";
+  // const {userId} = useCart();
 
-  const getUserCart = async ({ userId }) => {
-    const response = await getCart({ userId });
+  // const getUserCart = async ({ userId }) => {
+  //   const response = await getCart({ userId });
 
-    if (response.length != 0) {
-      setCart(response[0].cart);
-      console.log(response[0].cart);
-    }
-  };
+  //   if (response.length != 0) {
+  //     setCart(response[0].cart);
+  //     console.log(response[0].cart);
+  //   }
+  // };
 
-  useEffect(() => {
-    getUserCart({ userId });
-  }, []);
+  // useEffect(() => {
+  //   getUserCart({ userId });
+  // }, []);
+
+  const {cartProducts} = useCart()
 
   return (
     <section className="max-container mx-auto px-4 mt-16">
@@ -29,12 +32,12 @@ const DisplayCart = () => {
           </h2>
           <p
             className={`font-palanquin text-xl capitalize font-semibold lg:max-w-lg mt-3 ${
-              cart.length === 0 ? "" : "hidden"
+              cartProducts.length === 0 ? "" : "hidden"
             }`}
           >
             Your Cart is empty!
           </p>
-          <Table cart={cart} />
+          <Table cart={cartProducts} />
         </div>
 
         <div className=" rounded-xl bg-stone-100 p-[30px] col-span-2">
