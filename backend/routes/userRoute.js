@@ -6,7 +6,19 @@ const router = express.Router();
 
 ////// POST: create user ///////
 router.post("/login", async (request, response) => {
-    response.json({msg: "login"})
+    const email = request.body.email
+    const password = request.body.password
+
+    try {
+        const user = await User.login(email, password)
+
+        const token = createToken(user._id)
+
+        response.status(200).json({email, token})
+    } catch (error) {
+        response.status(400).json({error: error.message})
+    }
+
 })
 
 const createToken = (_id) => {
