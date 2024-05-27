@@ -2,14 +2,10 @@ import React from "react";
 import { useState } from "react";
 import LoginSignupForm from "../components/LoginSignupForm";
 
-const Login = () => {
-  
 
-  return (
+const Signup = () => {
 
-    <LoginSignupForm type={"Login"} />
-  
-    );
+  return <LoginSignupForm type={"Sign Up"}/>;
 };
 
-export default Login
+export default Signup;

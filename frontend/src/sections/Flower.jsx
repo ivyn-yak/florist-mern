@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Form from "../components/Form";
+import Form from "../components/ProductForm";
 
 const Flower = ({ flowerId }) => {
   const [flower, setFlower] = useState([]);
