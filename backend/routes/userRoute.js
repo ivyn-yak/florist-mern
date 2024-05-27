@@ -1,11 +1,18 @@
 import express from "express";
 import { User } from "../models/userModel.js";
+import jwt from "jsonwebtoken";
+
 const router = express.Router();
 
 ////// POST: create user ///////
 router.post("/login", async (request, response) => {
     response.json({msg: "login"})
 })
+
+const createToken = (_id) => {
+    return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "3d" });
+  }
+  
 
 router.post("/signup", async (request, response) => {
 
@@ -15,7 +22,9 @@ router.post("/signup", async (request, response) => {
     try {
         const user = await User.signup(email, password)
 
-        response.status(200).json({email, user})
+        const token = createToken(user._id)
+
+        response.status(200).json({email, token})
     } catch (error) {
         response.status(400).json({error: error.message})
     }
