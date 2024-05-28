@@ -6,6 +6,9 @@ import NavLink from "./NavLink";
 import { getCart } from "../constants/cartApi";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import useLogout from "../hooks/useLogout";
+import Button from "./Button";
+import { useAuthContext } from "../auth/useAuthContext";
 
 const Nav = () => {
   const { userId, cartProducts, setCartProducts } = useCart();
@@ -21,6 +24,13 @@ const Nav = () => {
     const interval = setInterval(fetchCartCount, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
+
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
+
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <header className="padding-x py-8 absolute z-10 w-full">
@@ -42,23 +52,26 @@ const Nav = () => {
           </li>
         </ul>
 
-        <div className="max-xl:hidden leading-normal text-lg text-slate-800 font-serif tracking-wider">
-          <Link
-            to="/login"
-            className="hover:underline"
-          >
-            Login
-          </Link>
+        {user && (
+          <div>
+            <span>{user.email}</span>
+            <Button label={"Logout"} onClick={handleLogout} />
+          </div>
+        )}
 
-          <span > / </span>
+        {!user && (
+          <div className="max-xl:hidden leading-normal text-lg text-slate-800 font-serif tracking-wider">
+            <Link to="/login" className="hover:underline">
+              Login
+            </Link>
 
-          <Link
-            to="/signup"
-            className="hover:underline"
-          >
-            Signup
-          </Link>
-        </div>
+            <span> / </span>
+
+            <Link to="/signup" className="hover:underline">
+              Signup
+            </Link>
+          </div>
+        )}
 
         <div className="hidden max-lg:block ">
           <img src={hamburger} alt="Hamburger" width={25} height={25} />
