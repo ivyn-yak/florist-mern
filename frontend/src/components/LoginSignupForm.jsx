@@ -9,8 +9,9 @@ const LoginSignupForm = ({type}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e)
     console.log(email, password);
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -47,7 +48,7 @@ const LoginSignupForm = ({type}) => {
           />
         </div>
         <div className="mt-6 flex flex-wrap gap-4">
-          <Button label={type} type="submit" />
+          <Button label={type} type="submit" onClick={handleSubmit} />
         </div>
       </form>
     </div>

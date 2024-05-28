@@ -1,4 +1,4 @@
-const Button = ({ label, iconURL, fullWidth, backgroundColor, textColor, borderColor }) => {
+const Button = ({ label, iconURL, fullWidth, backgroundColor, textColor, borderColor, onClick }) => {
   return (
     <button
       className={`flex font-serif tracking-wider justify-center items-center gap-2 px-7 py-4 border text-lg leading-none
@@ -7,6 +7,7 @@ const Button = ({ label, iconURL, fullWidth, backgroundColor, textColor, borderC
       } rounded-full ${
         fullWidth && "w-full"
       } border-gray-100 transition-transform duration-200 hover:scale-105`}
+      onClick={onClick}
     >
       {label}
 
