@@ -13,6 +13,8 @@ const Nav = () => {
   const { user } = useAuthContext();
   // const id = user?.id
   const { cart } = useCartContext();
+  const cartList = cart && cart.length > 0 ? cart[0].cart || [] : [];
+
   const { logout } = useLogout();
   const handleLogout = () => {
     logout();
@@ -34,7 +36,7 @@ const Nav = () => {
             </li>
           ))}
           <li>
-            <NavLink to="/cart">Cart ({cart ? cart.length:0})</NavLink>
+            <NavLink to="/cart">Cart ({cartList ? cartList.length : 0})</NavLink>
           </li>
         </ul>
 

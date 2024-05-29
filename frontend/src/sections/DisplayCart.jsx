@@ -3,8 +3,9 @@ import Table from "../components/Table";
 import { useCartContext } from "../cart/useCartContext";
 
 const DisplayCart = () => {
-
-  const {cart} = useCartContext()
+  const { cart } = useCartContext();
+  const cartList = cart[0].cart;
+  console.log(cartList);
 
   return (
     <section className="max-container mx-auto px-4 mt-16">
@@ -15,12 +16,12 @@ const DisplayCart = () => {
           </h2>
           <p
             className={`font-palanquin text-xl capitalize font-semibold lg:max-w-lg mt-3 ${
-               cart.length == 0 ? "" : "hidden"
+              cartList && cartList.length === 0 ? "" : "hidden"
             }`}
           >
             Your Cart is empty!
           </p>
-          <Table cart={cart} />
+          <Table cart={cartList} />
         </div>
 
         <div className=" rounded-xl bg-stone-100 p-[30px] col-span-2">

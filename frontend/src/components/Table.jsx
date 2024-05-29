@@ -26,7 +26,7 @@ const Table = ({ cart }) => {
   console.log(flowers);
 
   return (
-    <div className={`grid ${cart.length === 0 ? "hidden" : ""}`}>
+    <div className={`grid ${cart && cart.length === 0 ? "hidden" : ""}`}>
       <table className="w-full mt-4 text-left grid-cols-1 gap-10 md:grid-cols-4 md:gap-8">
         <tr>
           <th className="col-span-3">Product</th>

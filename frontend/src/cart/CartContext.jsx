@@ -1,4 +1,6 @@
 import { useReducer, createContext,useEffect } from "react";
+import { useAuthContext } from "../auth/useAuthContext";
+import { getCart } from "../constants/cartApi";
 
 export const CartContext = createContext({});
 
@@ -21,14 +23,22 @@ const cartReducer = (state, action) => {
 export function CartContextProvider({ children }) {
 
   const [state, dispatch] = useReducer(cartReducer, { cart: [] });
+  const {user} = useAuthContext()
 
   useEffect(() => {
-
-    const cart = JSON.parse(localStorage.getItem("cart"));
-    if (cart) {
-      dispatch({ type: "UPDATE", payload: cart });
-    }
-  }, []);
+    const fetchCart = async () => {
+      try {
+        if (user) {
+          const cart = await getCart({ userId: user.id });
+          dispatch({ type: "UPDATE", payload: cart || [] });
+        }
+      } catch (error) {
+        console.error("Error fetching cart:", error);
+      }
+    };
+  
+    fetchCart();
+  }, [user]);
 
   console.log("CartContext state:", state, state.cart);
 
