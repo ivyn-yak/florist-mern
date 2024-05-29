@@ -13,7 +13,7 @@ const useLoginSignup = (link) => {
     const response = await fetch(link, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password}),
     });
     const json = await response.json();
 
@@ -23,6 +23,7 @@ const useLoginSignup = (link) => {
     }
     if (response.ok) {
       localStorage.setItem("user", JSON.stringify(json));
+      localStorage.setItem("cart", []);
       dispatch({ type: "LOGIN", payload: json });
       setIsLoading(false);
     }

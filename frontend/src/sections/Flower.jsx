@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Form from "../components/ProductForm";
+import ProductForm from "../components/ProductForm";
 
 const Flower = ({ flowerId }) => {
   const [flower, setFlower] = useState([]);
@@ -36,7 +36,7 @@ const Flower = ({ flowerId }) => {
           {"$" + flower.price / 100}
         </p>
 
-        <Form id={flower._id}/>
+        <ProductForm id={flower._id}/>
       </div>
     </section>
   );

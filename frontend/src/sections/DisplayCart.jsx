@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getCart } from "../constants/cartApi";
 import Table from "../components/Table";
-import { useCart } from "../components/CartContext";
+// import { useCart } from "../cart/CartContext";
+import { useCartContext } from "../cart/useCartContext";
 
 const DisplayCart = () => {
   // const [cart, setCart] = useState([]);
@@ -21,7 +22,7 @@ const DisplayCart = () => {
   //   getUserCart({ userId });
   // }, []);
 
-  const {cartProducts} = useCart()
+  const {cart} = useCartContext()
 
   return (
     <section className="max-container mx-auto px-4 mt-16">
@@ -32,12 +33,12 @@ const DisplayCart = () => {
           </h2>
           <p
             className={`font-palanquin text-xl capitalize font-semibold lg:max-w-lg mt-3 ${
-              cartProducts.length === 0 ? "" : "hidden"
+               cart.length == 0 ? "" : "hidden"
             }`}
           >
             Your Cart is empty!
           </p>
-          <Table cart={cartProducts} />
+          <Table cart={cart} />
         </div>
 
         <div className=" rounded-xl bg-stone-100 p-[30px] col-span-2">

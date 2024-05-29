@@ -1,7 +1,7 @@
 import { headerLogo } from "../assets/images";
 import { hamburger } from "../assets/icons";
 import { navLinks } from "../constants/index.js";
-import { useCart } from "./CartContext";
+// import { useCart } from "../cart/CartContext";
 import NavLink from "./NavLink";
 import { getCart } from "../constants/cartApi";
 import React, { useEffect } from "react";
@@ -9,24 +9,28 @@ import { Link } from "react-router-dom";
 import useLogout from "../hooks/useLogout";
 import Button from "./Button";
 import { useAuthContext } from "../auth/useAuthContext";
+import { useCartContext } from "../cart/useCartContext";
 
 const Nav = () => {
-  const { userId, cartProducts, setCartProducts } = useCart();
-
-  const fetchCartCount = async () => {
-    const cart = await getCart({ userId });
-    setCartProducts(cart[0].cart);
-  };
-
-  useEffect(() => {
-    fetchCartCount();
-
-    const interval = setInterval(fetchCartCount, 5 * 60 * 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const { logout } = useLogout();
   const { user } = useAuthContext();
+  const id = user?.id
+  const { cart } = useCartContext();
+  const { logout } = useLogout();
+
+  // const fetchCartCount = async () => {
+  //   const cart = await getCart({ id });
+  //   setCartProducts(cart[0].cart);
+  // };
+
+  // useEffect(() => {
+  //   if (user){
+  //     fetchCartCount();
+  //   }
+    
+  //   const interval = setInterval(fetchCartCount, 5 * 60 * 1000);
+  //   return () => clearInterval(interval);
+  // }, []);
+
 
   const handleLogout = () => {
     logout();
@@ -48,7 +52,7 @@ const Nav = () => {
             </li>
           ))}
           <li>
-            <NavLink to="/cart">Cart ({cartProducts.length})</NavLink>
+            <NavLink to="/cart">Cart ({cart ? cart.length:0})</NavLink>
           </li>
         </ul>
 

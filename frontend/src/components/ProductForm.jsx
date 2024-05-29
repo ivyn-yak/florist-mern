@@ -2,43 +2,61 @@ import React, { useState, useContext, useEffect, useMemo } from "react";
 import axios from "axios";
 import Counter from "./Counter";
 import Button from "./Button";
-import { useAddToCart, useCart } from "./CartContext";
+// import { useAddToCart } from "../cart/CartContext";
 import { getCart, createCart, updateCart } from "../constants/cartApi";
+import { useCartContext } from "../cart/useCartContext";
+import { useAuthContext } from "../auth/useAuthContext";
 
 const Form = ({ id }) => {
   const [quantity, setQuantity] = useState(1);
   const [message, setMessage] = useState("");
 
-  const { cartProducts } = useCart();
-  const memoCartProducts = useMemo(() => cartProducts, [cartProducts]);
-  const addToCart = useAddToCart();
+  const { cart, dispatch } = useCartContext();
+  // const cart = []
 
-  const userId = "2";
+  const memoCartProducts = useMemo(() => cart, [cart]);
 
-  const cart = {
+  const {user} = useAuthContext()
+  const userId = user?.id
+
+  const item = {
     id: id,
     quantity: quantity,
     message: message,
   };
 
-  const processCart = async () => {
-    try {
-      const response = await getCart({ userId });
+  // const processCart = async (newCart) => {
+  //   try {
+  //     const response = await getCart({ userId });
 
-      if (response.length > 0) {
-        const res = await updateCart({ userId, cartProducts });
-      } else {
-        const res = await createCart({ userId, cartProducts });
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  //     if (response.length > 0) {
+  //       const res = await updateCart({ userId, newCart });
+  //     } else {
+  //       const res = await createCart({ userId, newCart });
+  //     }
 
-  useEffect(() => {
-    processCart();
-    console.log(memoCartProducts);
-  }, [memoCartProducts]);
+  //     localStorage.setItem("cart", JSON.stringify(newCart));
+
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (userId) {
+  //     const updateCart = async () => {
+  //       const response = await getCart({ userId });
+  //       dispatch({ type: "UPDATE", payload: response });
+  //     };
+
+  //     updateCart();
+  //   }
+  // }, [userId, dispatch]);
+
+  // useEffect(() => {
+  //  console.log(state)
+  // }, [state]);
+
 
   const handleChange = (e) => {
     setMessage(e.target.value);
@@ -46,9 +64,16 @@ const Form = ({ id }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setMessage("");
-    addToCart(cart);
+
+    console.log(item)
+    const newCart = [...cart, item];    
+    console.log(newCart)
+
+    dispatch({ type: "ADD", payload: item });
+    localStorage.setItem("cart", JSON.stringify(newCart))
+
+    // await processCart(newCart);
   };
 
   return (

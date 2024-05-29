@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import Nav from "./components/Nav.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
-import { CartContextProvider } from "./components/CartContext.jsx";
+import { CartContextProvider } from "./cart/CartContext.jsx";
 import { AuthContextProvider } from "./auth/authContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
