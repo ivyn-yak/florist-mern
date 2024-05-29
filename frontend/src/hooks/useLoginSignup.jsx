@@ -23,7 +23,6 @@ const useLoginSignup = (link) => {
     }
     if (response.ok) {
       localStorage.setItem("user", JSON.stringify(json));
-      localStorage.setItem("cart", []);
       dispatch({ type: "LOGIN", payload: json });
       setIsLoading(false);
     }

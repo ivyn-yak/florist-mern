@@ -1,8 +1,4 @@
-import { useReducer, createContext, useState, useEffect } from "react";
-import { getCart } from "../constants/cartApi";
-import axios from "axios";
-import { useAuthContext } from "../auth/useAuthContext";
-import { useCartContext } from "./useCartContext";
+import { useReducer, createContext,useEffect } from "react";
 
 export const CartContext = createContext({});
 

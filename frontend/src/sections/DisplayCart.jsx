@@ -1,26 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getCart } from "../constants/cartApi";
 import Table from "../components/Table";
-// import { useCart } from "../cart/CartContext";
 import { useCartContext } from "../cart/useCartContext";
 
 const DisplayCart = () => {
-  // const [cart, setCart] = useState([]);
-
-  // const {userId} = useCart();
-
-  // const getUserCart = async ({ userId }) => {
-  //   const response = await getCart({ userId });
-
-  //   if (response.length != 0) {
-  //     setCart(response[0].cart);
-  //     console.log(response[0].cart);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getUserCart({ userId });
-  // }, []);
 
   const {cart} = useCartContext()
 
