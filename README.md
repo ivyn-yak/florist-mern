@@ -42,6 +42,6 @@ Install backend dependencies
 Start the backend server
 
 ```bash
-  npm run dev
+  npm run start
   
 ```
