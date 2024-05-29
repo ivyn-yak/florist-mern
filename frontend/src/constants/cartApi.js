@@ -9,12 +9,11 @@ export const getCart = async ({ userId }) => {
   }
 };
 
-export const createCart = async ({ userId, cartProducts }) => {
+export const createCart = async ({ userId, newCart }) => {
   try {
-    console.log(userId, cartProducts);
     const response = await axios.post(`http://localhost:5001/cart`, {
       userId: userId,
-      cart: cartProducts,
+      cart: newCart,
     });
     console.log(response.data);
     return response.data;
@@ -23,11 +22,11 @@ export const createCart = async ({ userId, cartProducts }) => {
   }
 };
 
-export const updateCart = async ({ userId, cartProducts }) => {
+export const updateCart = async ({ userId, newCart }) => {
   try {
     const response = await axios.put(`http://localhost:5001/cart/${userId}`, {
       userId: userId,
-      cart: cartProducts,
+      cart: newCart,
     });
     console.log(response.data);
     return response.data;

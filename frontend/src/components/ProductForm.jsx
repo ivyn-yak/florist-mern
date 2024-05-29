@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import Counter from "./Counter";
 import Button from "./Button";
 import { useCartContext } from "../cart/useCartContext";
+import {useAuthContext} from "../auth/useAuthContext";
+import { getCart, updateCart, createCart } from "../constants/cartApi";
 
 const Form = ({ id }) => {
   const [quantity, setQuantity] = useState(1);
   const [message, setMessage] = useState("");
 
   const { cart, dispatch } = useCartContext();
-  // const cart = []
+  const {user} = useAuthContext();
+  const userId = user?.id
 
   const item = {
     id: id,
@@ -20,16 +23,34 @@ const Form = ({ id }) => {
     setMessage(e.target.value);
   };
 
+  const processCart = async (newCart) => {
+    try {
+      const response = await getCart({ userId });
+
+      console.log(userId, newCart)
+
+      if (response.length > 0) {
+        const res = await updateCart({ userId, newCart });
+      } else {
+        const res = await createCart({ userId, newCart });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
     setQuantity(1)
 
-    const newCart = [...cart, item];    
+    const newCart = [...cart, item];
 
     dispatch({ type: "ADD", payload: item });
     localStorage.setItem("cart", JSON.stringify(newCart))
 
+    processCart(newCart)
+    
   };
 
   return (
